@@ -97,7 +97,7 @@ android {
             -lcpufeatures -lfarmhash -lfft2d -lflatbuffers
 }
 
-# TensorFlow Lite - iOS - Universal libraries
+# TensorFlow Lite - iOS - Universal library
 ios {
         LIBS += -L$$TFLITE_MAKE_PATH/gen/lib/ \
                 -framework Accelerate \

@@ -38,21 +38,6 @@ public:
     double getInfTime() const;
 
 private:
-    // Box prior
-    static const int NUM_LINES   = 4;
-    static const int NUM_RESULTS = 1917; // WARNING: can this value be obtained from the model?
-    // Fixed image size for image classification
-    const int fixed_width  = 224;
-    const int fixed_heigth = 224;
-    // Output names
-    const QString num_detections    = "num_detections";
-    const QString detection_classes = "detection_classes";
-    const QString detection_scores  = "detection_scores";
-    const QString detection_boxes   = "detection_boxes";
-    // Output lists
-    const std::vector<std::string> listOutputsObjDet = {num_detections.toStdString(),detection_classes.toStdString(),detection_scores.toStdString(),detection_boxes.toStdString()};
-    const std::vector<std::string> listOutputsImgCla = {"MobilenetV2/Predictions/Reshape_1"};
-
     bool initialized;
     double threshold;
 
