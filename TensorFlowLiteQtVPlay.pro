@@ -80,7 +80,7 @@ linux:!android {
             -ltensorflow-lite -ldl
 }
 
-# TensorFlow - Android - armv7a
+# TensorFlow Lite - Android - armv7a
 android {
     QT += androidextras
     LIBS += -L$$TENSORFLOW_PATH/bazel-bin/tensorflow/contrib/lite \
@@ -97,15 +97,11 @@ android {
             -lcpufeatures -lfarmhash -lfft2d -lflatbuffers
 }
 
-# TensorFlow - iOS - Universal libraries
+# TensorFlow Lite - iOS - Universal libraries
 ios {
-    INCLUDEPATH += $$TF_MAKE_PATH/gen/protobuf-host/include
-    LIBS += -L$$PWD/ios/lib \
-            -L$$PWD/ios/lib/arm64 \
-            -framework Accelerate \
-            -Wl,-force_load,$$TF_MAKE_PATH/gen/lib/libtensorflow-core.a \
-            -Wl,-force_load,$$TF_MAKE_PATH/gen/protobuf_ios/lib/libprotobuf.a \
-            -Wl,-force_load,$$TF_MAKE_PATH/downloads/nsync/builds/arm64.ios.c++11/libnsync.a
+        LIBS += -L$$TFLITE_MAKE_PATH/gen/lib/ \
+                -framework Accelerate \
+                -ltensorflow-lite
 }
 
 DISTFILES += \
