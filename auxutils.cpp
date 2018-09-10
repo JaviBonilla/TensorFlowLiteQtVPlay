@@ -9,6 +9,7 @@
 #include <QFileInfo>
 #include <QDir>
 #include <QStandardPaths>
+#include <QThread>
 #include <QDebug>
 
 #include "colormanager.h"
@@ -22,6 +23,11 @@ const QString assetsPath = "assets";
 QString AuxUtils::getAssetsPath()
 {
     return assetsPath;
+}
+
+int AuxUtils::numberThreads()
+{
+    return QThread::idealThreadCount();
 }
 
 QString AuxUtils::resolveModelFilePath(QString modelName)

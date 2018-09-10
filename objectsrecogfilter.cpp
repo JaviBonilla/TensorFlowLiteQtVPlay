@@ -259,6 +259,41 @@ void ObjectsRecogFilter::setShowTime(bool value)
     showInfTime = value;
 }
 
+int ObjectsRecogFilter::getNThreads() const
+{
+    return numThreads;
+}
+
+void ObjectsRecogFilter::setNThreads(int value)
+{
+    qDebug() << "Filter Num. Threads:" << value;
+
+    if (value != numThreads)
+    {
+        numThreads = value;
+        tf.setNThreads(numThreads);
+        initialized = false;
+        emit initializedChanged(initialized);
+        tft.setTf(&tf);
+    }
+}
+
+bool ObjectsRecogFilter::getAcceleration() const
+{
+    return accele;
+}
+
+void ObjectsRecogFilter::setAcceleration(bool value)
+{
+    if (value != accele)
+    {
+        accele = value;
+        tf.setAcceleration(accele);
+        emit initializedChanged(initialized);
+        tft.setTf(&tf);
+    }
+}
+
 void ObjectsRecogFilter::init()
 {
     initialized = tf.init();

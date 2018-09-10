@@ -20,6 +20,8 @@ class ObjectsRecogFilter : public QAbstractVideoFilter
     Q_PROPERTY(QString model READ getModel WRITE setModel)
     Q_PROPERTY(bool showTime READ getShowTime WRITE setShowTime)
     Q_PROPERTY(bool ready READ getInitialized() NOTIFY initializedChanged)
+    Q_PROPERTY(bool acceleration READ getAcceleration WRITE setAcceleration)
+    Q_PROPERTY(int nThreads READ getNThreads WRITE setNThreads)
 
 private:
     double camOrientation;
@@ -28,6 +30,8 @@ private:
     bool   running;
     bool   initialized;
     bool   showInfTime;
+    int    numThreads;
+    bool   accele;
     QMutex mutex;
     QSize  videoSize;
     QString kindNetwork;
@@ -67,6 +71,10 @@ public:
     void setModel(const QString &value);
     bool getShowTime() const;
     void setShowTime(bool value);
+    int getNThreads() const;
+    void setNThreads(int value);
+    bool getAcceleration() const;
+    void setAcceleration(bool value);
 };
 
 class ObjectsRecogFilterRunable : public QVideoFilterRunnable

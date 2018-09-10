@@ -12,6 +12,8 @@ Page {
     property double minConfidence
     property string model
     property bool showTime
+    property int nThreads
+    property bool acceleration
 
     // Selected camera index
     property int cameraIndex: 0
@@ -66,6 +68,8 @@ Page {
         minConfidence: root.minConfidence
         model:         root.model
         showTime:      root.showTime
+        nThreads:      root.nThreads
+        acceleration:  root.acceleration
     }
 
     // No camera found

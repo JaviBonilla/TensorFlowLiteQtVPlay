@@ -16,16 +16,22 @@ App {
     readonly property string kMinConfidence: "MinConfidence"
     readonly property string kModel:         "Model"
     readonly property string kShowTime:      "ShowTime"
+    readonly property string kNThreads:      "NThreads"
+    readonly property string kAcceleration:  "Acceleration"
 
     // Default values
     readonly property double defMinConfidence: 0.5
     readonly property string defModel: "ImageClassification"
     readonly property bool   defShowTime: false
+    readonly property int    defNThreads: 1
+    readonly property bool   defAcceleration: false
 
     // Properties
     property double minConfidence
     property string model
     property bool   showTime
+    property int    nThreads
+    property bool   acceleration
 
     // Local storage component
     Storage {
@@ -35,6 +41,8 @@ App {
             minConfidence = getValue(kMinConfidence) !== undefined ? getValue(kMinConfidence) : defMinConfidence
             model         = getValue(kModel)         !== undefined ? getValue(kModel)         : defModel
             showTime      = getValue(kShowTime)      !== undefined ? getValue(kShowTime)      : defShowTime
+            nThreads      = getValue(kNThreads)      !== undefined ? getValue(kNThreads)      : defNThreads
+            acceleration  = getValue(kAcceleration)  !== undefined ? getValue(kAcceleration)  : defAcceleration
         }
     }
 
@@ -50,6 +58,8 @@ App {
                     minConfidence: app.minConfidence
                     model: app.model
                     showTime: app.showTime
+                    nThreads: app.nThreads
+                    acceleration: app.acceleration
                 }
             }
         }
@@ -64,6 +74,8 @@ App {
                     minConfidence: app.minConfidence
                     model: app.model
                     showTime: app.showTime
+                    nThreads: app.nThreads
+                    acceleration: app.acceleration
 
                     onMinConfidenceChanged: {
                         app.minConfidence = appSettingsPage.minConfidence
@@ -78,6 +90,16 @@ App {
                     onShowTimeChanged: {
                         app.showTime = appSettingsPage.showTime
                         storage.setValue(kShowTime,app.showTime)
+                    }
+
+                    onNThreadsChanged: {
+                        app.nThreads = appSettingsPage.nThreads
+                        storage.setValue(kNThreads,app.nThreads)
+                    }
+
+                    onAccelerationChanged: {
+                        app.acceleration = appSettingsPage.acceleration
+                        storage.setValue(kAcceleration,app.acceleration)
                     }
                 }
             }

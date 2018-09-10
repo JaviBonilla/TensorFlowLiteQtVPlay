@@ -84,6 +84,7 @@ linux:!android {
 android {
     QT += androidextras
     LIBS += -L$$TENSORFLOW_PATH/bazel-bin/tensorflow/contrib/lite \
+            -L$$TENSORFLOW_PATH/bazel-bin/tensorflow/contrib/lite/c \
             -L$$TENSORFLOW_PATH/bazel-bin/tensorflow/contrib/lite/core/api \
             -L$$TENSORFLOW_PATH/bazel-bin/tensorflow/contrib/lite/kernels \
             -L$$TENSORFLOW_PATH/bazel-bin/tensorflow/contrib/lite/kernels/internal \
@@ -91,7 +92,7 @@ android {
             -L$$TENSORFLOW_PATH/bazel-bin/external/farmhash_archive \
             -L$$TENSORFLOW_PATH/bazel-bin/external/fft2d \
             -L$$TENSORFLOW_PATH/bazel-bin/external/flatbuffers \
-            -lframework -lcontext -larena_planner -lsimple_memory_arena -lutil -lapi \
+            -lframework -larena_planner -lsimple_memory_arena -lutil -lapi -lc_api_internal \
             -lbuiltin_ops -lbuiltin_op_kernels -lkernel_util -leigen_support -lgemm_support \
             -laudio_utils -lkernel_utils -ltensor_utils -lneon_tensor_utils -lquantization_util -lstring_util \
             -lcpufeatures -lfarmhash -lfft2d -lflatbuffers
@@ -106,7 +107,8 @@ ios {
 
 DISTFILES += \
     qml/VideoPage.qml \
-    AppSettingsPage.qml
+    AppSettingsPage.qml \
+    qml/PopupMessage.qml
 
 HEADERS += \
     objectsrecogfilter.h \

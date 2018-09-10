@@ -2,8 +2,10 @@
 #include <VPApplication>
 
 #include <QQmlApplicationEngine>
+#include <QQmlContext>
 
 #include "tensorflowlite.h"
+#include "auxutils.h"
 #include "objectsrecogfilter.h"
 
 int main(int argc, char *argv[])
@@ -35,6 +37,10 @@ int main(int argc, char *argv[])
     // also see the .pro file for more details
     vplay.setMainQmlFileName(QStringLiteral("qrc:/qml/Main.qml"));
 #endif
+
+    // Global objects
+    AuxUtils* auxUtils = new AuxUtils();
+    engine.rootContext()->setContextProperty("auxUtils",auxUtils);
 
     engine.load(QUrl(vplay.mainQmlFileName()));
 

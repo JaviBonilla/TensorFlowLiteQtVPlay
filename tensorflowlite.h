@@ -36,10 +36,16 @@ public:
     int getImgHeight() const;
     int getImgWidth() const;
     double getInfTime() const;
+    int getNThreads() const;
+    void setNThreads(int value);
+    bool getAcceleration() const;
+    void setAcceleration(bool value);
 
 private:
     bool initialized;
     double threshold;
+    int nThreads;
+    bool acceleration;
 
     // Results
     QStringList rCaption;

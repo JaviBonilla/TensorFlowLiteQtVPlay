@@ -81,6 +81,26 @@ double TensorflowLite::getInfTime() const
     return infTime;
 }
 
+int TensorflowLite::getNThreads() const
+{
+    return nThreads;
+}
+
+void TensorflowLite::setNThreads(int value)
+{
+    nThreads = value;
+}
+
+bool TensorflowLite::getAcceleration() const
+{
+    return acceleration;
+}
+
+void TensorflowLite::setAcceleration(bool value)
+{
+    acceleration = value;
+}
+
 bool TensorflowLite::init()
 {   
     try{
@@ -103,6 +123,15 @@ bool TensorflowLite::init()
             qDebug() << "Interpreter: ERROR";
             return false;
         }
+
+        // Apply accelaration (Neural Network Android)
+        interpreter->UseNNAPI(acceleration);
+
+        // Set number of threads
+        if (nThreads > 1) interpreter->SetNumThreads(nThreads);
+
+        qDebug() << "NNAPI:" << acceleration;
+        qDebug() << "Num. Threads:" << nThreads;
 
         if(interpreter->AllocateTensors() != kTfLiteOk)
         {

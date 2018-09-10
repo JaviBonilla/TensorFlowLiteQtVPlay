@@ -4,5 +4,6 @@
         <file>qml/AppSettingsPage.qml</file>
         <file>qml/Main.qml</file>
         <file>qml/VideoPage.qml</file>
+        <file>qml/PopupMessage.qml</file>
     </qresource>
 </RCC>

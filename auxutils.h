@@ -5,8 +5,13 @@
 #include <QByteArray>
 #include <QFont>
 
-class AuxUtils
+class AuxUtils : public QObject
 {
+    Q_OBJECT
+
+public slots:
+    static int numberThreads();
+
 public:
     static QString resolveModelFilePath(QString modelName);
     static QString getAssetsPath();
