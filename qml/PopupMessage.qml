@@ -4,11 +4,11 @@ import QtQuick 2.0
 import QtQuick.Controls 2.3
 
 Item{
-    id:     control
-    z:      1000000
+    id: control
+    z: 1000000
     parent: app.rootItem
     readonly property int defTimeout: 2500
-    readonly property color defColor:   Theme.tintColor
+    readonly property color defColor: Theme.tintColor
     property string text
     property font   font
     property int    timeout:      defTimeout
@@ -68,8 +68,6 @@ Item{
 
     function show(msg, time, bColor)
     {
-        //if (Common.popup) Common.popup.enabled = false
-        //Common.popup = control
         if (msg)  text    = msg
         if (time) timeout = time
         else timeout = defTimeout
