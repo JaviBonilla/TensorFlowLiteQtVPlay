@@ -34,7 +34,7 @@ Page {
             text: qsTr("Minimum confidence")
         }
 
-        Item{ height: dp(5); width: 1 }
+        Item{ height: dp(10); width: 1 }
 
         AppSlider{
             id: slider
@@ -58,29 +58,7 @@ Page {
             text: Math.round(slider.position * 100) + " %"
         }
 
-        Item{ height: dp(10); width: 1 }
-
-        Row{
-            width: parent.width - 2*dp(20)
-            anchors.horizontalCenter: parent.horizontalCenter
-            spacing: width - tShowInfTime.width - sShowInfTime.width
-
-            AppText {
-                id: tShowInfTime
-                text: qsTr("Show inference time")
-                anchors.verticalCenter: parent.verticalCenter
-                verticalAlignment: AppText.AlignVCenter
-            }
-
-            AppSwitch{
-                anchors.verticalCenter: parent.verticalCenter
-                id: sShowInfTime
-                checked: showTime
-                onToggled: showTime = checked
-            }
-        }
-
-        Item{ height: dp(20); width: 1 }
+        Item{ height: dp(30); width: 1 }
 
         Row {
             width: parent.width
@@ -108,6 +86,8 @@ Page {
                 onClicked: message.show(sThreads.to + " " + (sThreads.to>1 ? qsTr("cores") : qsTr("core")) + " " + qsTr("detected"))
             }
         }
+
+        //Item{ height: dp(10); width: 1 }
 
         AppSlider{
             id: sThreads
@@ -143,6 +123,28 @@ Page {
         Row{
             width: parent.width - 2*dp(20)
             anchors.horizontalCenter: parent.horizontalCenter
+            spacing: width - tShowInfTime.width - sShowInfTime.width
+
+            AppText {
+                id: tShowInfTime
+                text: qsTr("Show inference time")
+                anchors.verticalCenter: parent.verticalCenter
+                verticalAlignment: AppText.AlignVCenter
+            }
+
+            AppSwitch{
+                anchors.verticalCenter: parent.verticalCenter
+                id: sShowInfTime
+                checked: showTime
+                onToggled: showTime = checked
+            }
+        }
+
+        Item{ height: dp(20); width: 1 }
+
+        Row{
+            width: parent.width - 2*dp(20)
+            anchors.horizontalCenter: parent.horizontalCenter
             spacing: width - rAcceleration.width - sAcceleration.width
 
             Row {
@@ -172,15 +174,11 @@ Page {
                 id: sAcceleration
                 enabled: Qt.platform.os === "android"
                 checked: enabled ? acceleration : false
+                onToggled: acceleration = checked
             }
         }
 
-        Item{
-            height: dp(30)
-            width: 1
-        }
-
-        Item{ height: dp(20); width: 1 }
+        Item{ height: dp(40); width: 1 }
 
         AppText{
             anchors.margins: dp(20)
@@ -192,7 +190,7 @@ Page {
             text: qsTr("Tensorflow Lite model")
         }
 
-        Item{ height: dp(20); width: 1 }
+        Item{ height: dp(30); width: 1 }
 
         ExclusiveGroup { id: modelGroup }
 
