@@ -62,9 +62,9 @@ macx {
     ICON = macx/app_icon.icns
 }
 
-# TensorFlow Lite - All
+# TensorFlow Lite - Global
 TENSORFLOW_PATH = $$PWD/tensorflow/
-TFLITE_MAKE_PATH = $$TENSORFLOW_PATH/tensorflow/contrib/lite/tools/make
+TFLITE_MAKE_PATH = $$TENSORFLOW_PATH/tensorflow/lite/tools/make
 INCLUDEPATH += $$TENSORFLOW_PATH \
                $$TFLITE_MAKE_PATH/downloads/ \
                $$TFLITE_MAKE_PATH/downloads/eigen \
@@ -83,19 +83,19 @@ linux:!android {
 # TensorFlow Lite - Android - armv7a
 android {
     QT += androidextras
-    LIBS += -L$$TENSORFLOW_PATH/bazel-bin/tensorflow/contrib/lite \
-            -L$$TENSORFLOW_PATH/bazel-bin/tensorflow/contrib/lite/c \
-            -L$$TENSORFLOW_PATH/bazel-bin/tensorflow/contrib/lite/core/api \
-            -L$$TENSORFLOW_PATH/bazel-bin/tensorflow/contrib/lite/kernels \
-            -L$$TENSORFLOW_PATH/bazel-bin/tensorflow/contrib/lite/kernels/internal \
+    LIBS += -L$$TENSORFLOW_PATH/bazel-bin/tensorflow/lite \
+            -L$$TENSORFLOW_PATH/bazel-bin/tensorflow/lite/c \
+            -L$$TENSORFLOW_PATH/bazel-bin/tensorflow/lite/core/api \
+            -L$$TENSORFLOW_PATH/bazel-bin/tensorflow/lite/kernels \
+            -L$$TENSORFLOW_PATH/bazel-bin/tensorflow/lite/kernels/internal \
             -L$$TENSORFLOW_PATH/bazel-bin/external/androidndk \
             -L$$TENSORFLOW_PATH/bazel-bin/external/farmhash_archive \
             -L$$TENSORFLOW_PATH/bazel-bin/external/fft2d \
             -L$$TENSORFLOW_PATH/bazel-bin/external/flatbuffers \
             -lframework -larena_planner -lsimple_memory_arena -lutil -lapi -lc_api_internal \
             -lbuiltin_ops -lbuiltin_op_kernels -lkernel_util -leigen_support -lgemm_support \
-            -laudio_utils -lkernel_utils -ltensor_utils -lneon_tensor_utils -lquantization_util -lstring_util \
-            -lcpufeatures -lfarmhash -lfft2d -lflatbuffers
+            -laudio_utils -lkernel_utils -ltensor_utils -lneon_tensor_utils -lquantization_util \
+            -llstm_eval -lstring_util -lcpufeatures -lfarmhash -lfft2d -lflatbuffers
 }
 
 # TensorFlow Lite - iOS - Universal library

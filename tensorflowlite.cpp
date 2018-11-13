@@ -4,9 +4,9 @@
 #include <QElapsedTimer>
 #include <QDebug>
 
-#include "tensorflow/contrib/lite/builtin_op_data.h"
-#include "tensorflow/contrib/lite/kernels/internal/tensor.h"
-#include "tensorflow/contrib/lite/kernels/internal/tensor_utils.h"
+#include "tensorflow/lite/builtin_op_data.h"
+#include "tensorflow/lite/kernels/internal/tensor.h"
+#include "tensorflow/lite/kernels/internal/tensor_utils.h"
 using namespace tflite;
 
 #include "get_top_n.h"
